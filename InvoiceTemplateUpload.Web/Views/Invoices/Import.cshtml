@@ -1,0 +1,37 @@
+﻿
+@model InvoiceTemplateUpload.Application.Invoicing.DTO.InvoiceDto
+
+
+@{
+    ViewData["Title"] = "Save Bulk Invoice";
+}
+
+<h1>Create Bulk Invoice</h1>
+
+<h4>Invoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Import" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                @*<label asp-for="Logo" class="control-label"></label>*@
+                <input type="file" name="file" id="file" accept='image/*'>
+                @*<span asp-validation-for="Logo" class="text-danger"></span>*@
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
